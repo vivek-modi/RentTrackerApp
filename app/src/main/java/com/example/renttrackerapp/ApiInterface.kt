@@ -1,5 +1,6 @@
 package com.example.renttrackerapp
 
+import com.example.renttrackerapp.modal.AddHome
 import com.example.renttrackerapp.modal.HomeResults
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -8,7 +9,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
 interface ApiInterface {
@@ -16,8 +19,12 @@ interface ApiInterface {
     @GET("/homes?page=1")
     fun getHomeResults(): Call<HomeResults>
 
+    @POST("/home")
+    fun addHome(@Body addHome: AddHome): Call<Void>
+
     companion object {
-        var BASE_URL = "https://rent-tracker-rupal.herokuapp.com"
+        private var BASE_URL = "https://rent-tracker-rupal.herokuapp.com"
+
         fun create(): ApiInterface {
 
             val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {

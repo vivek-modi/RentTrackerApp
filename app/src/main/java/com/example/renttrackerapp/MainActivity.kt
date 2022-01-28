@@ -1,5 +1,6 @@
 package com.example.renttrackerapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.renttrackerapp.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,9 +19,30 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        checkMimeType()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupView()
+    }
+
+    private fun checkMimeType() {
+        when (intent.action) {
+            Intent.ACTION_SEND -> {
+                if ("text/plain" == intent.type) {
+                    handleSendLink(intent)
+                }
+            }
+            else -> {
+                viewModel.fetchHomes()
+            }
+        }
+    }
+
+    private fun handleSendLink(intent: Intent) {
+        intent.getStringExtra(Intent.EXTRA_TEXT)?.let {
+            viewModel.homeResultsLiveData.value = UiState.IsLoading(true)
+            viewModel.addHome(viewModel.extractLink(it))
+        }
     }
 
     private fun setupView() {
