@@ -1,10 +1,14 @@
 package com.example.renttrackerapp
 
+import android.location.Address
+import android.location.Geocoder
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.renttrackerapp.databinding.RentTrackerItemLayoutBinding
 import com.example.renttrackerapp.modal.Home
+import java.io.IOException
+import java.util.*
 
 class RentTrackerViewHolder(private val binding: RentTrackerItemLayoutBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -23,5 +27,25 @@ class RentTrackerViewHolder(private val binding: RentTrackerItemLayoutBinding) :
 
     fun bindItem(item: Home?) {
         binding.address.text = item?.title
+        item?.latitude?.let { latitude ->
+            item.longitude?.let { longitude ->
+                binding.place.text = getLocation(latitude, longitude)
+            }
+        }
+    }
+
+    private fun getLocation(latitude: String, longitude: String): String? {
+        val geocoder = Geocoder(binding.root.context, Locale.getDefault())
+        var addresses: MutableList<Address>? = null
+        try {
+            addresses = geocoder.getFromLocation(
+                latitude.toDouble(),
+                longitude.toDouble(),
+                1
+            )
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return addresses?.get(0)?.locality
     }
 }
