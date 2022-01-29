@@ -1,6 +1,5 @@
 package com.example.renttrackerapp
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.renttrackerapp.modal.HomeResults
@@ -61,9 +60,13 @@ class ActivityViewModel : ViewModel() {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful) {
                         fetchHomes()
-                        Log.e("isSuccessful", "Done")
                     } else {
-                        Log.e("is", "Not Done $response")
+                        homeResultsLiveData.value = UiState.OnError(
+                            Throwable(
+                                response.message(),
+                                Throwable("Http Request Error")
+                            )
+                        )
                     }
                 }
 
