@@ -10,10 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 interface ApiInterface {
@@ -23,6 +20,9 @@ interface ApiInterface {
 
     @POST("/home")
     suspend fun addHome(@Body addHomeRequest: RequestBody): RentTrackerMessage
+
+    @DELETE("/home")
+    suspend fun deleteHome(@Query("id") id: Int): RentTrackerMessage
 
     companion object {
         private var BASE_URL = "https://rent-tracker-rupal.herokuapp.com"

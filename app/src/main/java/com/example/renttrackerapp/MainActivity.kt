@@ -62,4 +62,8 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
             putExtra("itemDetail", item)
         })
     }
+
+    override fun onItemDelete(id: Int) {
+        viewModel.deleteHome(id)
+    }
 }

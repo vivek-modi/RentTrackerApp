@@ -23,7 +23,7 @@ class ActivityViewModel : ViewModel() {
         private const val FORM_DATA_NAME = "link"
     }
 
-    var rentTrackerAdapter : RentTrackerAdapter? = null
+    var rentTrackerAdapter: RentTrackerAdapter? = null
 
     fun getHomeRequestFlow(): Flow<PagingData<Home>> {
         return Pager(
@@ -71,6 +71,26 @@ class ActivityViewModel : ViewModel() {
             .setType(MultipartBody.FORM)
             .addFormDataPart(FORM_DATA_NAME, link)
             .build()
+    }
+
+    fun deleteHome(id: Int) {
+        viewModelScope.launch {
+            try {
+                ApiInterface.create()
+                    .deleteHome(id)
+                rentTrackerAdapter?.refresh()
+            } catch (exception: HttpException) {
+                val moshi = Moshi.Builder()
+                    .add(KotlinJsonAdapterFactory())
+                    .build()
+                val jsonAdapter = moshi.adapter(RentTrackerMessage::class.java)
+                exception.response()?.errorBody()?.string()?.let {
+                    val errorMessage = jsonAdapter.fromJson(it)
+
+                    Log.e("exception", "${errorMessage?.msg}")
+                }
+            }
+        }
     }
 }
 

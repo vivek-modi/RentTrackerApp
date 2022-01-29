@@ -29,6 +29,9 @@ class RentTrackerViewHolder(private val binding: RentTrackerItemLayoutBinding) :
                 itemClickListener.onClick(item)
             }
         }
+        binding.deleteIcon.setOnClickListener {
+            item?.id?.let { it1 -> itemClickListener.onItemDelete(it1) }
+        }
     }
 
 //    private fun getAddress(latitude: String, longitude: String): String {
