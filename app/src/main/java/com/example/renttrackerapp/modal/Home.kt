@@ -1,6 +1,6 @@
 package com.example.renttrackerapp.modal
 
-data class Result(
+data class Home(
     var description: String? = null,
     var facilities: List<String>? = null,
     var id: Int? = null,

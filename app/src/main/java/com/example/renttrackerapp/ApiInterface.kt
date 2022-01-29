@@ -1,26 +1,29 @@
 package com.example.renttrackerapp
 
 import com.example.renttrackerapp.modal.HomeResults
+import com.example.renttrackerapp.modal.RentTrackerMessage
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Call
+import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 interface ApiInterface {
 
-    @GET("/homes?page=1")
-    fun getHomeResults(): Call<HomeResults>
+    @GET("/homes")
+    suspend fun getHomeResults(@Query("page") page: Int): HomeResults
 
     @POST("/home")
-    fun addHome(@Body addHomeRequest: RequestBody): Call<Void>
+    suspend fun addHome(@Body addHomeRequest: RequestBody): RentTrackerMessage
 
     companion object {
         private var BASE_URL = "https://rent-tracker-rupal.herokuapp.com"
@@ -44,6 +47,7 @@ interface ApiInterface {
 
             val retrofit = Retrofit.Builder()
                 .client(clientSetup)
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .baseUrl(BASE_URL)
                 .build()

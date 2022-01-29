@@ -1,7 +1,7 @@
 package com.example.renttrackerapp.modal
 
 data class HomeResults(
-    var count: Int? = null,
-    var results: List<Result>? = null,
-    var success: Boolean? = null
+    var count: Int,
+    var results: List<Home>,
+    var success: Boolean
 )
