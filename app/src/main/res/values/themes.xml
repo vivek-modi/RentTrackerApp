@@ -32,4 +32,5 @@
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">4sp</item>
     </style>
+
 </resources>

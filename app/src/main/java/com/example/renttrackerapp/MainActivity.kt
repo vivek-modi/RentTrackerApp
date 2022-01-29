@@ -8,9 +8,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.renttrackerapp.databinding.ActivityMainBinding
+import com.example.renttrackerapp.model.Home
 import kotlinx.coroutines.flow.collectLatest
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ItemClickListener {
 
     companion object {
         private const val INTENT_TYPE = "text/plain"
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.rentTrackerAdapter = RentTrackerAdapter(this)
+
         checkMimeType()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -48,9 +51,15 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launchWhenCreated {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.getHomeRequestFlow().collectLatest {
-                    viewModel.rentTrackerAdapter.submitData(it)
+                    viewModel.rentTrackerAdapter?.submitData(it)
                 }
             }
         }
+    }
+
+    override fun onClick(item: Home) {
+        startActivity(Intent(this, HomeDetailActivity::class.java).apply {
+            putExtra("itemDetail", item)
+        })
     }
 }

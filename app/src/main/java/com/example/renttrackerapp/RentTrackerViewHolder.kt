@@ -21,9 +21,14 @@ class RentTrackerViewHolder(private val binding: RentTrackerItemLayoutBinding) :
         }
     }
 
-    fun bindItem(item: Home?) {
+    fun bindItem(item: Home?, itemClickListener: ItemClickListener) {
         binding.titleText.text = item?.title
         binding.leaseText.text = item?.lease
+        binding.root.setOnClickListener {
+            if (item != null) {
+                itemClickListener.onClick(item)
+            }
+        }
     }
 
 //    private fun getAddress(latitude: String, longitude: String): String {

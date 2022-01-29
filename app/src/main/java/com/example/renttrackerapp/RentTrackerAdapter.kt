@@ -5,7 +5,9 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.renttrackerapp.model.Home
 
-class RentTrackerAdapter : PagingDataAdapter<Home, RentTrackerViewHolder>(RESULT_COMPARATOR) {
+class RentTrackerAdapter(
+    private val itemClickListener: ItemClickListener
+) : PagingDataAdapter<Home, RentTrackerViewHolder>(RESULT_COMPARATOR) {
 
     companion object {
         private val RESULT_COMPARATOR = object : DiffUtil.ItemCallback<Home>() {
@@ -20,7 +22,7 @@ class RentTrackerAdapter : PagingDataAdapter<Home, RentTrackerViewHolder>(RESULT
     }
 
     override fun onBindViewHolder(holder: RentTrackerViewHolder, position: Int) {
-        holder.bindItem(getItem(position))
+        holder.bindItem(getItem(position), itemClickListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RentTrackerViewHolder {

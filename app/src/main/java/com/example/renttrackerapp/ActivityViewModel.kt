@@ -22,7 +22,8 @@ class ActivityViewModel : ViewModel() {
         private const val HTTPS_SCHEME = "https"
         private const val FORM_DATA_NAME = "link"
     }
-     val rentTrackerAdapter = RentTrackerAdapter()
+
+    var rentTrackerAdapter : RentTrackerAdapter? = null
 
     fun getHomeRequestFlow(): Flow<PagingData<Home>> {
         return Pager(
@@ -50,7 +51,7 @@ class ActivityViewModel : ViewModel() {
                     .addHome(
                         getRequestBodyForAddHome(link)
                     )
-                rentTrackerAdapter.refresh()
+                rentTrackerAdapter?.refresh()
             } catch (exception: HttpException) {
                 val moshi = Moshi.Builder()
                     .add(KotlinJsonAdapterFactory())
