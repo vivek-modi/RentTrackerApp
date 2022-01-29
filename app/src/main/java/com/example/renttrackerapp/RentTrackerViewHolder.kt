@@ -26,27 +26,22 @@ class RentTrackerViewHolder(private val binding: RentTrackerItemLayoutBinding) :
     }
 
     fun bindItem(item: Home?) {
-        binding.addressText.text = item?.title
+        binding.titleText.text = item?.title
         binding.leaseText.text = item?.lease
-        item?.latitude?.let { latitude ->
-            item.longitude?.let { longitude ->
-                binding.placeText.text = getLocation(latitude, longitude)
-            }
-        }
     }
 
-    private fun getLocation(latitude: String, longitude: String): String? {
-        val geocoder = Geocoder(binding.root.context, Locale.getDefault())
-        var addresses: MutableList<Address>? = null
-        try {
-            addresses = geocoder.getFromLocation(
-                latitude.toDouble(),
-                longitude.toDouble(),
-                1
-            )
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        return addresses?.get(0)?.locality
-    }
+//    private fun getAddress(latitude: String, longitude: String): String {
+//        val geocoder = Geocoder(binding.root.context, Locale.getDefault())
+//        var addresses: MutableList<Address>? = null
+//        try {
+//            addresses = geocoder.getFromLocation(
+//                latitude.toDouble(),
+//                longitude.toDouble(),
+//                1
+//            )
+//        } catch (e: IOException) {
+//            e.printStackTrace()
+//        }
+//        return addresses?.get(0).toString()
+//    }
 }

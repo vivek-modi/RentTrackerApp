@@ -58,6 +58,7 @@ class ActivityViewModel : ViewModel() {
                 val jsonAdapter = moshi.adapter(RentTrackerMessage::class.java)
                 exception.response()?.errorBody()?.string()?.let {
                     val errorMessage = jsonAdapter.fromJson(it)
+
                     Log.e("exception", "${errorMessage?.msg}")
                 }
             }

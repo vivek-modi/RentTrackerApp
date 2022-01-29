@@ -8,58 +8,46 @@
     android:background="@drawable/panel_shape">
 
     <TextView
-        android:id="@+id/placeText"
-        style="@style/SemiBoldNormal24"
-        android:layout_width="wrap_content"
+        android:id="@+id/titleText"
+        style="@style/SemiBoldNormal20"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toTopOf="@+id/leaseText"
+        app:layout_constraintEnd_toStartOf="@+id/deleteIcon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tool:text="Dublin" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/deleteIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
+        android:padding="5dp"
         android:src="@drawable/ic_delete"
         app:layout_constraintBottom_toTopOf="@+id/leaseText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/titleText"
         app:layout_constraintTop_toTopOf="parent"
         tool:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/leaseText"
-        style="@style/Regular20"
+        style="@style/Regular16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/addressText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/placeText" />
-
-    <TextView
-        android:id="@+id/addressText"
-        style="@style/Light16"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leaseText"
-        tool:text="Dublin Place Dublin Place Dublin PlaceDublin PlaceDublin Place " />
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

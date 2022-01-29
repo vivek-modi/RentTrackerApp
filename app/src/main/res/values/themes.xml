@@ -15,21 +15,21 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="SemiBoldNormal24" parent="TextAppearance.AppCompat">
+    <style name="SemiBoldNormal20" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/source_sans_pro_semi_bold</item>
-        <item name="android:textSize">24sp</item>
-        <item name="android:lineSpacingExtra">8sp</item>
-    </style>
-
-    <style name="Regular20" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/source_sans_pro</item>
         <item name="android:textSize">20sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
     </style>
 
-    <style name="Light16" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/source_sans_pro_light</item>
+    <style name="Regular16" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/source_sans_pro</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="Light14" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/source_sans_pro_light</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
     </style>
 </resources>
