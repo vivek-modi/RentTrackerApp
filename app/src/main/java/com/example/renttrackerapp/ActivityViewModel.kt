@@ -3,13 +3,11 @@ package com.example.renttrackerapp
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.renttrackerapp.modal.AddHome
 import com.example.renttrackerapp.modal.HomeResults
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.await
 
 class ActivityViewModel : ViewModel() {
 
