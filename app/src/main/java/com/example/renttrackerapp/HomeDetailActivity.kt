@@ -44,6 +44,7 @@ class HomeDetailActivity : AppCompatActivity() {
         binding.daftLink.setOnClickListener {
             home?.link?.let { it1 -> openApp(it1) }
         }
+        binding.propertyTextView.text = home?.prop_overview
         binding.rentTextView.text = home?.rent
         binding.descriptionTextView.text = home?.description
     }

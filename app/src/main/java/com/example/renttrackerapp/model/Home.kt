@@ -13,5 +13,6 @@ data class Home(
     var phone: String? = null,
     var rent: String? = null,
     var stores: Stores? = Stores(),
-    var title: String? = null
+    var title: String? = null,
+    var prop_overview: String? = null
 ) : Serializable

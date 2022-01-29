@@ -15,6 +15,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.Design.NoActionBar" parent="Theme.AppCompat.Light">
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="colorPrimary">@android:color/white</item>
+    </style>
+
     <style name="SemiBoldNormal20" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/source_sans_pro_semi_bold</item>
         <item name="android:textSize">20sp</item>
