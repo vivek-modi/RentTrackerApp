@@ -8,14 +8,14 @@
     android:background="@drawable/panel_shape">
 
     <TextView
-        android:id="@+id/place"
-        style="@style/RegularNormal24"
-        android:layout_width="wrap_content"
+        android:id="@+id/placeText"
+        style="@style/SemiBoldNormal24"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/address"
+        app:layout_constraintBottom_toTopOf="@+id/leaseText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +23,23 @@
         tool:text="Dublin" />
 
     <TextView
-        android:id="@+id/address"
-        style="@style/RegularLight16"
+        android:id="@+id/leaseText"
+        style="@style/Regular20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/addressText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placeText" />
+
+    <TextView
+        android:id="@+id/addressText"
+        style="@style/Light16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -35,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/place"
+        app:layout_constraintTop_toBottomOf="@+id/leaseText"
         tool:text="Dublin Place Dublin Place Dublin PlaceDublin PlaceDublin Place " />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

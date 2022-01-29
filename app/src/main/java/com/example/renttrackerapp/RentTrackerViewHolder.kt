@@ -26,10 +26,11 @@ class RentTrackerViewHolder(private val binding: RentTrackerItemLayoutBinding) :
     }
 
     fun bindItem(item: Home?) {
-        binding.address.text = item?.title
+        binding.addressText.text = item?.title
+        binding.leaseText.text = item?.lease
         item?.latitude?.let { latitude ->
             item.longitude?.let { longitude ->
-                binding.place.text = getLocation(latitude, longitude)
+                binding.placeText.text = getLocation(latitude, longitude)
             }
         }
     }
