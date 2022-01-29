@@ -22,6 +22,6 @@ class RentTrackerViewHolder(private val binding: RentTrackerItemLayoutBinding) :
     }
 
     fun bindItem(item: Home?) {
-        binding.title.text = item?.title
+        binding.address.text = item?.title
     }
 }
