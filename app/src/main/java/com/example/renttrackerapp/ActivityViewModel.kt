@@ -51,7 +51,7 @@ class ActivityViewModel : ViewModel() {
 
     fun addHome(link: String) {
         viewModelScope.launch {
-            val response = ApiInterface.create().addHome(AddHome(link))
+            val response = ApiInterface.create().addHome(link)
 
             response.enqueue(object : retrofit2.Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {

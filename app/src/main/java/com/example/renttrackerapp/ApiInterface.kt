@@ -20,7 +20,7 @@ interface ApiInterface {
     fun getHomeResults(): Call<HomeResults>
 
     @POST("/home")
-    fun addHome(@Body addHome: AddHome): Call<Void>
+    fun addHome(@Body link: String): Call<Void>
 
     companion object {
         private var BASE_URL = "https://rent-tracker-rupal.herokuapp.com"
