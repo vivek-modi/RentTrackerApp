@@ -14,6 +14,10 @@ import kotlinx.coroutines.flow.collect
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        private const val INTENT_TYPE = "text/plain"
+    }
+
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<ActivityViewModel>()
 
@@ -28,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkMimeType() {
         when (intent.action) {
             Intent.ACTION_SEND -> {
-                if ("text/plain" == intent.type) {
+                if (INTENT_TYPE == intent.type) {
                     handleSendLink(intent)
                 }
             }
