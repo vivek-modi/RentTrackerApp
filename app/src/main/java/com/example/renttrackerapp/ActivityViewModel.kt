@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.renttrackerapp.modal.HomeResults
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Response
 
@@ -13,6 +14,7 @@ class ActivityViewModel : ViewModel() {
 
     companion object {
         private const val HTTPS_SCHEME = "https"
+        private const val FORM_DATA_NAME = "link"
     }
 
     var homeResultsLiveData = MutableStateFlow<UiState>(UiState.OnEmpty)
@@ -49,7 +51,11 @@ class ActivityViewModel : ViewModel() {
 
     fun addHome(link: String) {
         viewModelScope.launch {
-            val response = ApiInterface.create().addHome(link)
+
+            val response = ApiInterface.create()
+                .addHome(
+                    getRequestBodyForAddHome(link)
+                )
 
             response.enqueue(object : retrofit2.Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
@@ -66,6 +72,13 @@ class ActivityViewModel : ViewModel() {
                 }
             })
         }
+    }
+
+    private fun getRequestBodyForAddHome(link: String): MultipartBody {
+        return MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart(FORM_DATA_NAME, link)
+            .build()
     }
 }
 

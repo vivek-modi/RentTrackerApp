@@ -1,10 +1,10 @@
 package com.example.renttrackerapp
 
-import com.example.renttrackerapp.modal.AddHome
 import com.example.renttrackerapp.modal.HomeResults
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -20,7 +20,7 @@ interface ApiInterface {
     fun getHomeResults(): Call<HomeResults>
 
     @POST("/home")
-    fun addHome(@Body link: String): Call<Void>
+    fun addHome(@Body addHomeRequest: RequestBody): Call<Void>
 
     companion object {
         private var BASE_URL = "https://rent-tracker-rupal.herokuapp.com"
