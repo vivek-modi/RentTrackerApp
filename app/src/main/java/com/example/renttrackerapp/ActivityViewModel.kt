@@ -7,8 +7,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.renttrackerapp.modal.Home
-import com.example.renttrackerapp.modal.RentTrackerMessage
+import com.example.renttrackerapp.model.Home
+import com.example.renttrackerapp.model.RentTrackerMessage
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.flow.Flow

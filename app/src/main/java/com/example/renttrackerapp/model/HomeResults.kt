@@ -1,4 +1,4 @@
-package com.example.renttrackerapp.modal
+package com.example.renttrackerapp.model
 
 data class HomeResults(
     var count: Int,

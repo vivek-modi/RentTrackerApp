@@ -1,4 +1,4 @@
-package com.example.renttrackerapp.modal
+package com.example.renttrackerapp.model
 
 data class Place(
     var distance: Map<String, WayToGo>? = null,

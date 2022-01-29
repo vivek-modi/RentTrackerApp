@@ -3,7 +3,7 @@ package com.example.renttrackerapp
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.example.renttrackerapp.modal.Home
+import com.example.renttrackerapp.model.Home
 
 class RentTrackerAdapter : PagingDataAdapter<Home, RentTrackerViewHolder>(RESULT_COMPARATOR) {
 

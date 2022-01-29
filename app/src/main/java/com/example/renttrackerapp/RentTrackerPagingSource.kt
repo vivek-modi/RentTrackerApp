@@ -2,7 +2,7 @@ package com.example.renttrackerapp
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.renttrackerapp.modal.Home
+import com.example.renttrackerapp.model.Home
 import java.io.IOException
 
 class RentTrackerPagingSource(

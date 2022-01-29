@@ -1,14 +1,10 @@
 package com.example.renttrackerapp
 
-import android.location.Address
-import android.location.Geocoder
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.renttrackerapp.databinding.RentTrackerItemLayoutBinding
-import com.example.renttrackerapp.modal.Home
-import java.io.IOException
-import java.util.*
+import com.example.renttrackerapp.model.Home
 
 class RentTrackerViewHolder(private val binding: RentTrackerItemLayoutBinding) :
     RecyclerView.ViewHolder(binding.root) {

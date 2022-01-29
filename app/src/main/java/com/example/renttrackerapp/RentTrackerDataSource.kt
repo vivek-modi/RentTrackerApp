@@ -1,6 +1,6 @@
 package com.example.renttrackerapp
 
-import com.example.renttrackerapp.modal.HomeResults
+import com.example.renttrackerapp.model.HomeResults
 
 class RentTrackerDataSource {
 

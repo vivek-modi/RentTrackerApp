@@ -1,13 +1,12 @@
 package com.example.renttrackerapp
 
-import com.example.renttrackerapp.modal.HomeResults
-import com.example.renttrackerapp.modal.RentTrackerMessage
+import com.example.renttrackerapp.model.HomeResults
+import com.example.renttrackerapp.model.RentTrackerMessage
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
-import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
