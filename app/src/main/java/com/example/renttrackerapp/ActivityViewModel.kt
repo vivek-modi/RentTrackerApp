@@ -21,7 +21,6 @@ class ActivityViewModel : ViewModel() {
 
     fun fetchHomes() {
         viewModelScope.launch {
-            homeResultsLiveData.value = UiState.IsLoading(true)
             val response = ApiInterface.create().getHomeResults()
             response.enqueue(object : retrofit2.Callback<HomeResults> {
                 override fun onResponse(call: Call<HomeResults>, response: Response<HomeResults>) {
@@ -37,6 +36,7 @@ class ActivityViewModel : ViewModel() {
                 }
 
                 override fun onFailure(call: Call<HomeResults>, t: Throwable) {
+                    homeResultsLiveData.value = UiState.IsLoading(false)
                     homeResultsLiveData.value = UiState.OnError(t)
                 }
             })

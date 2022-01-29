@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             else -> {
+                viewModel.homeResultsLiveData.value = UiState.IsLoading(true)
                 viewModel.fetchHomes()
             }
         }
