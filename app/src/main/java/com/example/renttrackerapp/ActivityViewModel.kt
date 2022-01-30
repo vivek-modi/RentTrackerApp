@@ -1,7 +1,8 @@
 package com.example.renttrackerapp
 
-import android.util.Log
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -16,7 +17,7 @@ import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import retrofit2.HttpException
 
-class ActivityViewModel : ViewModel() {
+class ActivityViewModel(private val app: Application) : AndroidViewModel(app) {
 
     companion object {
         private const val HTTPS_SCHEME = "https"
@@ -59,8 +60,11 @@ class ActivityViewModel : ViewModel() {
                 val jsonAdapter = moshi.adapter(RentTrackerMessage::class.java)
                 exception.response()?.errorBody()?.string()?.let {
                     val errorMessage = jsonAdapter.fromJson(it)
-
-                    Log.e("exception", "${errorMessage?.msg}")
+                    Toast.makeText(
+                        app.applicationContext,
+                        "Error while adding home, details: ${errorMessage?.msg}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
@@ -86,8 +90,11 @@ class ActivityViewModel : ViewModel() {
                 val jsonAdapter = moshi.adapter(RentTrackerMessage::class.java)
                 exception.response()?.errorBody()?.string()?.let {
                     val errorMessage = jsonAdapter.fromJson(it)
-
-                    Log.e("exception", "${errorMessage?.msg}")
+                    Toast.makeText(
+                        app.applicationContext,
+                        "Error while deleting home, details: ${errorMessage?.msg}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
