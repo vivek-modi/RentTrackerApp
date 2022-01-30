@@ -1,6 +1,8 @@
 package com.example.renttrackerapp
 
 import android.content.Intent
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +12,8 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import java.io.IOException
+import java.util.*
 
 class HomeDetailActivity : AppCompatActivity() {
 
@@ -25,7 +29,7 @@ class HomeDetailActivity : AppCompatActivity() {
 
         val home = intent.getSerializableExtra("itemDetail") as? Home
 
-        supportActionBar?.title = ""
+        supportActionBar?.title = home?.latitude?.let { getAddress(it, home.longitude) }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.titleTextView.text = home?.title
         val mapFragment = supportFragmentManager
@@ -84,5 +88,20 @@ class HomeDetailActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(link)
         startActivity(intent)
+    }
+
+    private fun getAddress(latitude: String, longitude: String): String? {
+        val geocoder = Geocoder(binding.root.context, Locale.getDefault())
+        var addresses: MutableList<Address>? = null
+        try {
+            addresses = geocoder.getFromLocation(
+                latitude.toDouble(),
+                longitude.toDouble(),
+                1
+            )
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return addresses?.get(0)?.locality
     }
 }

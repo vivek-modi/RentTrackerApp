@@ -33,19 +33,4 @@ class RentTrackerViewHolder(private val binding: RentTrackerItemLayoutBinding) :
             item?.id?.let { it1 -> itemClickListener.onItemDelete(it1) }
         }
     }
-
-//    private fun getAddress(latitude: String, longitude: String): String {
-//        val geocoder = Geocoder(binding.root.context, Locale.getDefault())
-//        var addresses: MutableList<Address>? = null
-//        try {
-//            addresses = geocoder.getFromLocation(
-//                latitude.toDouble(),
-//                longitude.toDouble(),
-//                1
-//            )
-//        } catch (e: IOException) {
-//            e.printStackTrace()
-//        }
-//        return addresses?.get(0).toString()
-//    }
 }
