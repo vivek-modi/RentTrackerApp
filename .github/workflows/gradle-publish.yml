@@ -1,0 +1,31 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v2
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Build with Gradle
+      run: ./gradlew build --stacktrace
+    - name: Grant execute permission for scripts/upload-apk.sh
+      run: chmod +x scripts/upload-apk.sh
+    - name: Deploy to Branch
+      run: ./scripts/upload-apk.sh
+      env:
+        PAT: ${{ secrets.PAT }}
