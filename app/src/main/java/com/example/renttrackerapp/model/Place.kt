@@ -7,5 +7,6 @@ data class Place(
     var lat: Double? = null,
     var long: Double? = null,
     var name: String? = null,
+    var nameExtra: String? = null,
     var navigationLink: String? = null
 ) : Serializable

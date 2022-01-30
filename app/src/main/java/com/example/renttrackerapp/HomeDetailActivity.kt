@@ -14,6 +14,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 class HomeDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeDetailBinding
+    private var storeAdapter = StoresAdapter()
+    private var placeAdapter = StoresAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +50,23 @@ class HomeDetailActivity : AppCompatActivity() {
         binding.rentTextView.text = home?.rent
         binding.descriptionTextView.text = home?.description
         binding.facilitiesTextView.text = home?.facilities?.joinToString("\n")
+        binding.storeRecyclerView.adapter = storeAdapter
+        binding.placeRecyclerView.adapter = placeAdapter
+
+        home?.stores?.places?.forEach { (key, value) ->
+            value.nameExtra = key
+        }
+
+        home?.stores?.stores?.forEach { (key, value) ->
+            value.nameExtra = key
+        }
+
+        storeAdapter.submitList(home?.stores?.stores?.map {
+            it.value
+        })
+        placeAdapter.submitList(home?.stores?.places?.map {
+            it.value
+        })
     }
 
     override fun onSupportNavigateUp(): Boolean {

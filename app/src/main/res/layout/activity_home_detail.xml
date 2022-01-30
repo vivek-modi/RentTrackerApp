@@ -73,6 +73,38 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/placesCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            app:cardCornerRadius="25dp"
+            app:contentPadding="20dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/placeRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/storesCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            app:cardCornerRadius="25dp"
+            app:contentPadding="20dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/storeRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/descriptionCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
