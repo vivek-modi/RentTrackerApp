@@ -47,6 +47,7 @@ class HomeDetailActivity : AppCompatActivity() {
         binding.propertyTextView.text = home?.prop_overview
         binding.rentTextView.text = home?.rent
         binding.descriptionTextView.text = home?.description
+        binding.facilitiesTextView.text = home?.facilities?.joinToString("\n")
     }
 
     override fun onSupportNavigateUp(): Boolean {
